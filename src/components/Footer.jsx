@@ -19,7 +19,7 @@ const Footer = () => {
           <BsYoutube to="https://www.youtube.com"/>
         </Link>
       </div>
-      <ul className="grid grid-cols-4 items-center justify-between text-sm space-y-2 text-gray-400">
+      <ul className="sm:grid sm:grid-cols-4 items-center justify-between text-sm space-y-2 text-gray-400">
         <li className="cursor-pointer hover:underline">Audio Description</li>
         <li className="cursor-pointer hover:underline">Help Center</li>
         <li className="cursor-pointer hover:underline">Gift Cards</li>

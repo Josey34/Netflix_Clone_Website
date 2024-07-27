@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { BiBell, BiLogOut, BiSearch, BiUser } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -9,6 +10,7 @@ const Header = () => {
   const [nav, setNav] = useState(false);
   const [hover, setHover] = useState(false);
   const [hoverAcc, setHoverAcc] = useState(false);
+  const [scroll, setScroll] = useState(false);
 
   const handleSwitchBtn = () => {
     setSwitchBtn(true);
@@ -30,6 +32,7 @@ const Header = () => {
   const onLeave = () => {
     setHover(false);
   };
+
   const onHoverAcc = () => {
     setHoverAcc(true);
   };
@@ -38,14 +41,33 @@ const Header = () => {
     setHoverAcc(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="fixed bg-transparent h-[80px] flex justify-between items-center cursor-pointer w-full mx-auto">
-        <a href="/">
+      <div
+        className={`fixed h-[80px] flex justify-between items-center cursor-pointer w-full mx-auto transition-colors duration-300 ${scroll ? 'bg-black' : 'bg-transparent'}`}
+      >
+        <Link to="/">
           <h1 className="text-2xl font-bold primary-color ml-4 text-red-600">
             NETFLIX
           </h1>
-        </a>
+        </Link>
         <ul className="hidden md:flex text-sm ">
           <li className="p-5 hover:duration-500 hover:text-slate-300 cursor-pointer">
             Home
@@ -124,13 +146,13 @@ const Header = () => {
           <button onMouseEnter={onHover} onMouseLeave={onLeave}>
             <BiBell />
             {hover ? (
-              <div className="mt-2 bg-[#202121] ease-in-out duration-500 flex absolute md:right-[130px] h-[100px] border-t-2 border-white">
+              <div className="mt-2 bg-[#202121] ease-in-out duration-500 flex absolute right-[90px] h-[100px] border-t-2 border-white">
                 <img
                   src="https://placehold.co/600x400"
                   alt="image"
                   className="flex justify-center items-center mr-4 py-2 pl-2"
                 ></img>
-                <div className="md:grid md:grid-cols-1 text-left pr-[100px] -space-y-10 items-center">
+                <div className="grid text-left pr-[100px] -space-y-10 items-center">
                   <p className="text-[17px]">New Arrival</p>
                   <p className="text-[17px]">Wonderland</p>
                   <p className="text-sm">Today</p>
@@ -143,7 +165,7 @@ const Header = () => {
           <button onMouseEnter={onHoverAcc} onMouseLeave={onLeaveAcc}>
             <BiUser />
             {hoverAcc ? (
-              <div className="mt-2 bg-[#202121] ease-in-out duration-500 absolute h-[200px] w-40 right-24 grid grid-cols-1">
+              <div className="mt-2 bg-[#202121] ease-in-out duration-500 absolute h-[200px] w-40 right-8 grid grid-cols-1">
                 <div className="pt-2 border border-slate-800 space-y-3">
                   <div className="items-center flex flex-col-1 gap-3 text-[18px] justify-center">
                     <CgProfile />
