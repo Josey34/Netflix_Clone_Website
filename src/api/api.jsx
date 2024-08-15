@@ -1,25 +1,9 @@
 import axios from "axios";
 
-const token= import.meta.env.REACT_APP_APITOKEN;
-const apiKey = import.meta.env.REACT_APP_APIKEY;
+const API_KEY = import.meta.env.VITE_APIKEY;
+const BASE_URL = "https://api.themoviedb.org/3";
 
-export const getMovieList = async () => {
-    
-const movie = {
-    method: 'GET',
-    url: 'https://api.themoviedb.org/3/movie/popular',
-    params: {language: 'en-US', page: '1'},
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${token}`
-    }
-  };
+const getPopularMovies = axios.get(BASE_URL+'/movie/popular?api_key='+API_KEY)
+const getMovieByGenreId = (id) => axios.get(BASE_URL+'/discover/movie?api_key='+API_KEY+'&with_genres='+id)
 
-  const response = await axios.request(movie)
-  return response.data.results;
-};
-
-export const searchMovie = async (q) => {
-    const search = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${q}&page=1&api_key=${apiKey}`);
-    return search.data
-};
+export default { getPopularMovies, getMovieByGenreId }

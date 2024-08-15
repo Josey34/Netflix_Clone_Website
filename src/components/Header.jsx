@@ -52,7 +52,6 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -61,10 +60,10 @@ const Header = () => {
   return (
     <>
       <div
-        className={`fixed h-[80px] flex justify-between items-center cursor-pointer w-full mx-auto transition-colors duration-300 ${scroll ? 'bg-black' : 'bg-transparent'}`}
+        className={`z-10 md:px-8 fixed h-[70px] flex justify-between items-center cursor-pointer w-full mx-auto transition-colors duration-300 ${scroll ? 'bg-black' : 'bg-transparent'}`}
       >
         <Link to="/">
-          <h1 className="text-2xl font-bold primary-color ml-4 text-red-600">
+          <h1 className="text-3xl font-bold primary-color ml-4 text-red-600">
             NETFLIX
           </h1>
         </Link>
