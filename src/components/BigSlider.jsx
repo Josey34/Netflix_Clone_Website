@@ -10,7 +10,7 @@ const BigSlider = () => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
 
   if (status.error.popular) {
-    return <div>{status.error.popular}</div>; // Replace with a styled error message
+    return <div>{status.error.popular}</div>;
   }
 
   return status.loading.popular ? (

@@ -142,7 +142,7 @@ const Header = () => {
               </>
             )}
           </button>
-          <button onMouseEnter={onHover} onMouseLeave={onLeave}>
+          <button onClick={onHover} onMouseLeave={onLeave}>
             <BiBell />
             {hover ? (
               <div className="mt-2 bg-[#202121] ease-in-out duration-500 flex absolute right-[90px] h-[100px] border-t-2 border-white">
@@ -161,7 +161,7 @@ const Header = () => {
               ""
             )}
           </button>
-          <button onMouseEnter={onHoverAcc} onMouseLeave={onLeaveAcc}>
+          <button onClick={onHoverAcc} onMouseLeave={onLeaveAcc}>
             <BiUser />
             {hoverAcc ? (
               <div className="mt-2 bg-[#202121] ease-in-out duration-500 absolute h-[200px] w-40 right-8 grid grid-cols-1">
