@@ -31,7 +31,7 @@ const ListMovies = ({ genreId }) => {
   return (
     <>
       <div id="movieLine" className="relative flex items-center cursor-pointer">
-        <button onClick={() => handleScroll(-ITEM_WIDTH)}>
+        <button onClick={() => handleScroll(-ITEM_WIDTH)} className="hidden lg:block">
           <MdChevronLeft size={50} />
         </button>
 
@@ -42,7 +42,7 @@ const ListMovies = ({ genreId }) => {
         )}
 
         <div
-          className="flex gap-3 mb-8 overflow-x-scroll scroll-smooth whitespace-nowrap no-scrollbar py-5 px-3"
+          className="flex gap-3 mb-8 overflow-x-scroll scroll-smooth whitespace-nowrap no-scrollbar py-5 md:px-3"
           ref={containerRef}
         >
           {movies.byGenre[genreId]?.map((movie, i) => {
@@ -54,7 +54,7 @@ const ListMovies = ({ genreId }) => {
           })}
         </div>
 
-        <button onClick={() => handleScroll(ITEM_WIDTH)}>
+        <button onClick={() => handleScroll(ITEM_WIDTH)} className="hidden lg:block">
           <MdChevronRight size={50} />
         </button>
       </div>

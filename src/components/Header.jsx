@@ -63,8 +63,11 @@ const Header = () => {
         className={`z-10 md:px-8 fixed h-[70px] flex justify-between items-center cursor-pointer w-full mx-auto transition-colors duration-300 ${scroll ? 'bg-black' : 'bg-transparent'}`}
       >
         <Link to="/">
-          <h1 className="text-3xl font-bold primary-color ml-4 text-red-600">
+          <h1 className="hidden md:block text-3xl font-bold primary-color ml-4 text-red-600">
             NETFLIX
+          </h1>
+          <h1 className="md:hidden text-3xl font-bold primary-color ml-4 text-red-600 px-8">
+            N
           </h1>
         </Link>
         <ul className="hidden md:flex text-sm ">
@@ -122,7 +125,7 @@ const Header = () => {
         <div className="text-2xl flex gap-6 mr-5">
           <button onClick={handleSwitchBtn} onMouseOut={() => setSwitchBtn(false)}>
             {!switchBtn ? (
-              <BiSearch />
+              <BiSearch className="hidden md:block"/>
             ) : (
               <>
                 <form className="searchForm" onSubmit={handleSearchBtn}>

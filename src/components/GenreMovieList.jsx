@@ -24,8 +24,8 @@ const GenreMovieList = () => {
       {GenreList.genreList[0].genres.map(
         (item, index) =>
           index < 4 && (
-            <div key={index} className="p-8 px-8 z-10">
-              <div className="flex justify-between items-center mb-1 mr-[53px]">
+            <div key={index} className="p-3 md:p-8 md:px-8 z-10">
+              <div className="flex justify-between items-center mb-1 lg:mr-[53px]">
                 <h2 className="text-white font-medium text-2xl">{item.name}</h2>
                 <button
                   className="hover:underline cursor-pointer"

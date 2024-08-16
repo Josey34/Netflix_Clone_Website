@@ -12,8 +12,8 @@ const GenreMovieModal = ({ movies, genreName, onClose }) => {
   const handleClose = () => {
     setIsVisible(false);
     setTimeout(() => {
-      onClose(); // Close the modal after the animation ends
-    }, 300); // Duration should match the animation time
+      onClose();
+    }, 300);
   };
 
   return (
@@ -33,13 +33,13 @@ const GenreMovieModal = ({ movies, genreName, onClose }) => {
             <CgClose />
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto max-h-[70vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto no-scrollbar max-h-[70vh] ">
           {movies.map((movie) => (
-            <div key={movie.id} className="flex flex-col items-center">
+            <div key={movie.id} className="flex flex-col items-center ">
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={movie.title}
-                className="w-40 h-auto rounded-md mb-2"
+                className="w-40 h-auto rounded-md mb-2 hover:border hover:cursor-pointer"
               />
               <p className="text-center text-xl font-bold">{movie.title}</p>
               <p className="text-center text-md font-semibold text-orange-300">⭐{movie.vote_average}</p>
